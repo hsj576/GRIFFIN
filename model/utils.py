@@ -6,6 +6,7 @@ from typing import List, Tuple
 import time
 import torch
 
+
 TOPK = 10  # topk for sparse tree
 
 from transformers.generation.logits_process import (
@@ -304,6 +305,9 @@ def tree_decoding(
 ):
     position_ids = tree_position_ids + input_ids.shape[1]
 
+    if position_ids is not None and position_ids.dim() == 1:
+        position_ids = position_ids.unsqueeze(0)
+        
     outputs, tree_logits, hidden_state = model(
         tree_candidates,
         output_orig=True,

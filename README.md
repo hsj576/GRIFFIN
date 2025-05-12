@@ -24,9 +24,15 @@
 ##
 
 <p align="center">
-  <img src="./figs/griffin_benchmark.png" alt="benchmark" width="790">
+  <img src="./figs/griffin_benchmark_t=0.png" alt="benchmark" width="790">
 </p>
+Speed up ratios of GRIFFIN when temperature = 0.
 
+
+<p align="center">
+  <img src="./figs/griffin_benchmark_t=1.png" alt="benchmark" width="790">
+</p>
+Speed up ratios of GRIFFIN when temperature = 1.
 
 ## Overview 
 
@@ -38,21 +44,15 @@
 
 
 
-## Comparison Example of GRIFFIN and EAGLE-2
-
-### Inference speed of EAGLE-2 for llama3-8B in a 4090GPU
+### Acceleration demo of GRIFFIN for llama3-8B in a 4090GPU
 
 <p align="center">
-  <img src="./figs/eagle2.gif" alt="demogif">
-</p>
-
-### Inference speed of GRIFFIN for llama3-8B in a 4090GPU
-
-<p align="center">
-  <img src="./figs/griffin.gif" alt="demogif">
+  <img src="./figs/GRIFFIN-acceleration.gif" alt="demogif">
 </p>
 
 ## Update
+
+**2025.5.12**: We now support Qwen-2.
 
 **2025.2.24**: GRIFFIN v1.0 is released.
 
@@ -77,11 +77,11 @@ pip install -r requirements.txt
 
 ## GRIFFIN Weights
 
-| Base Model  | EAGLE on Hugging Face  | Base Model  | EAGLE on Hugging Face  |
+| Base Model  | GRIFFIN on Hugging Face | Base Model  | GRIFFIN on Hugging Face |
 |------|------|------|------|
 | Vicuna-7B-v1.5 | [husj576/GRIFFIN-Vicuna-7B-v1.5](https://huggingface.co/husj576/GRIFFIN-Vicuna-7B-v1.5) | LLaMA2-Chat 7B | [husj576/GRIFFIN-llama2-chat-7B](https://huggingface.co/husj576/GRIFFIN-llama2-chat-7B) |
 | LLaMA3-Instruct 8B | [husj576/GRIFFIN-llama3-instruct-8B](https://huggingface.co/husj576/GRIFFIN-llama3-instruct-8B) | LLaMA2-Chat 13B | [husj576/GRIFFIN-llama2-chat-13B](https://huggingface.co/husj576/GRIFFIN-llama2-chat-13B) |
-| LLaMA3-Instruct 70B | [husj576/GRIFFIN-llama3-instruct-70B](https://huggingface.co/husj576/GRIFFIN-llama3-instruct-70B) |  |  |
+| LLaMA3-Instruct 70B | [husj576/GRIFFIN-llama3-instruct-70B](https://huggingface.co/husj576/GRIFFIN-llama3-instruct-70B) | Qwen2-Instruct 7B | [husj576/GRIFFIN-qwen2-instruct-7B](https://huggingface.co/husj576/GRIFFIN-qwen2-instruct-7B) |
 
 ## Inference
 The inference code we provide automatically allocates model weights (loading a model across multiple GPUs), allowing you to run models that exceed the memory of a single GPU.
@@ -146,6 +146,7 @@ To evaluate the performance and speed of GRIFFIN, use the provided scripts for d
 ./scripts/llama2_test_7b.sh
 ./scripts/llama2_test_13b.sh
 ./scripts/vicuna_test_7b.sh
+./scripts/qwen2_test_7b.sh
 ```
 
 ## Reference
